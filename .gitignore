@@ -1,0 +1,26 @@
+# 3rd party stuff
+/node_modules
+
+# Packaged app
+/out
+/build
+
+# Vim stuff
+*.swp
+*.swo
+/Session.vim
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Package manager debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# NPM lock file, use yarn instead
+/package-lock.json

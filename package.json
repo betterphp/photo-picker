@@ -1,0 +1,68 @@
+{
+    "name": "photo-picker",
+    "productName": "photo-picker",
+    "version": "1.0.0",
+    "description": "Helps pick the best photo from a selection",
+    "main": "src/main.js",
+    "scripts": {
+        "electron-start": "electron-forge start",
+        "electron-package": "electron-forge package",
+        "react-start": "BROWSER=none react-scripts start",
+        "react-build": "react-scripts build",
+        "start": "ENVIRONMENT=development run-p react-start electron-start",
+        "build": "run-s react-build electron-build",
+        "test": "react-scripts test"
+    },
+    "keywords": [],
+    "author": "jacek",
+    "license": "MIT",
+    "config": {
+        "forge": {
+            "make_targets": {
+                "win32": [ "squirrel" ],
+                "darwin": [ "zip" ],
+                "linux": [ "deb", "rpm" ]
+            },
+            "electronPackagerConfig": {
+                "packageManager": "yarn"
+            },
+            "electronWinstallerConfig": {
+                "name": "photo_picker"
+            },
+            "electronInstallerDebian": {},
+            "electronInstallerRedhat": {},
+            "github_repository": {
+                "owner": "",
+                "name": ""
+            },
+            "windowsStoreConfig": {
+                "packageName": "",
+                "name": "photopicker"
+            }
+        }
+    },
+    "jest": {
+        "watchPathIgnorePatterns": [
+            "out\/.+",
+            "node_modules\/.+"
+        ]
+    },
+    "browserslist": {
+        "production": [ "chrome 69" ],
+        "development": [ "chrome 69" ]
+    },
+    "devDependencies": {
+        "electron-forge": "^5.2.4",
+        "electron-prebuilt-compile": "4.0.0",
+        "react-scripts": "3.1.0",
+        "npm-run-all": "^4.1.5",
+        "node-sass": "^4.12.0"
+    },
+    "dependencies": {
+        "electron-compile": "^6.4.4",
+        "electron-squirrel-startup": "^1.0.0",
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6",
+        "normalize.css": "^8.0.1"
+    }
+}
