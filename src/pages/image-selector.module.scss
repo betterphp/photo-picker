@@ -1,0 +1,66 @@
+@import "src/variables";
+
+.container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.fileInput {
+    display: none;
+}
+
+.dropArea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 300px;
+    background: rgba(255, 255, 255, 0.05);
+    border: dashed 4px $accent-color;
+    transition: background ease 200ms;
+
+    &.dragging {
+        background: rgba(255, 255, 255, 0.1);
+    }
+}
+
+.instructions {
+    margin: 0px;
+    padding: 0px;
+    color: #ddd;
+    font-size: 40px;
+    user-select: none;
+}
+
+.or {
+    margin: 20px;
+    padding: 0px;
+    color: #ccc;
+    user-select: none;
+}
+
+.dragging {
+    .button, .or {
+        opacity: 0;
+    }
+}
+
+.button {
+    margin: 0px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: solid 1px $accent-color;
+    color: #ccc;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background ease 200ms;
+    user-select: none;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+}

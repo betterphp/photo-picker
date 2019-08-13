@@ -11,6 +11,10 @@ let window;
 
 const createWindow = () => {
     window = new BrowserWindow({
+        webPreferences: {
+            nodeIntegration: true,
+            webSecurity: false,
+        },
         width: 800,
         height: 600,
     });
