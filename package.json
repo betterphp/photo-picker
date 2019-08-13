@@ -15,7 +15,7 @@
     },
     "keywords": [],
     "author": "jacek",
-    "license": "MIT",
+    "license": "GPL-3.0",
     "config": {
         "forge": {
             "make_targets": {
