@@ -1,0 +1,23 @@
+.optionsContainer {
+    overflow: auto;
+}
+
+.optionPreview {
+    display: block;
+    float: left;
+    width: 50%;
+    height: auto;
+    border: solid 4px #fff;
+    cursor: pointer;
+}
+
+.thumbnailContainer {
+    display: flex;
+    overflow: hidden;
+}
+
+.thumbnail {
+    display: block;
+    width: auto;
+    height: 100px;
+}

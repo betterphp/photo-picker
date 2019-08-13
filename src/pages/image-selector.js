@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import { withAppContext, appContextTypes } from "state/app-context";
+import { withAppContext, appContextTypes, appContextDefaults } from "state/app-context";
 
 import styles from "./image-selector.module.scss";
 
@@ -11,7 +11,7 @@ class ImageSelector extends React.Component {
     }
 
     static defaultProps = {
-        appContext: {},
+        appContext: appContextDefaults,
     }
 
     /**

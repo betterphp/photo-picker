@@ -65,6 +65,7 @@
         "react-dom": "^16.8.6",
         "normalize.css": "^8.0.1",
         "lodash": "^4.17.15",
-        "classnames": "^2.2.6"
+        "classnames": "^2.2.6",
+        "sharp": "^0.23.0"
     }
 }

@@ -3,6 +3,7 @@ import _ from "lodash";
 import AppContext from "state/app-context";
 import ErrorMessageContainer from "components/error-message-container";
 import ImageSelector from "pages/image-selector";
+import PhotoPicker from "pages/photo-picker";
 
 export default class App extends React.Component {
 
@@ -16,6 +17,7 @@ export default class App extends React.Component {
 
         this.state = {
             images: [],
+            selectedImage: null,
             errorMessage: null,
         };
     }
@@ -46,6 +48,19 @@ export default class App extends React.Component {
     }
 
     /**
+     * Sets the chosen image
+     *
+     * @param {File} image The selected image
+     *
+     * @return {void}
+     */
+    setSelectedImage = (image) => {
+        this.setState({
+            selectedImage: image,
+        });
+    }
+
+    /**
      * Sets the error error message to be displayed
      *
      * @param {string|null} message The message
@@ -64,8 +79,22 @@ export default class App extends React.Component {
      * @return {React.Component} The page
      */
     renderPage () {
+        if (this.state.selectedImage) {
+            return (
+                <img
+                    src={`file://${this.state.selectedImage.path}`}
+                    style={{ maxWidth: "100%" }}
+                    alt=""
+                />
+            );
+        }
+
         if (this.state.images.length === 0) {
             return <ImageSelector />;
+        }
+
+        if (this.state.images.length >= 2) {
+            return <PhotoPicker />;
         }
 
         return <div />;
@@ -79,6 +108,8 @@ export default class App extends React.Component {
     render () {
         const context = {
             setImages: this.setImages,
+            setSelectedImage: this.setSelectedImage,
+            images: this.state.images,
             setErrorMessage: this.setErrorMessage,
             errorMessage: this.state.errorMessage,
         };
@@ -91,16 +122,6 @@ export default class App extends React.Component {
                 </>
             </AppContext.Provider>
         );
-
-        /*
-        <div>
-            <ul>
-                {_.map(this.state.images, (file) => (
-                    <img key={file.path} src={`file://${file.path}`} alt="" />
-                ))}
-            </ul>
-        </div>
-        */
     }
 
 }

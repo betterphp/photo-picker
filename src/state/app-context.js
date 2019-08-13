@@ -3,10 +3,18 @@ import PropTypes from "prop-types";
 
 const appContextTypes = PropTypes.shape({
     setImages: PropTypes.func,
+    setSelectedImage: PropTypes.func,
+    images: PropTypes.array,
+    setErrorMessage: PropTypes.func,
+    errorMessage: PropTypes.string,
 });
 
 const appContextDefaults = {
     setImages: () => undefined,
+    setSelectedImage: () => undefined,
+    images: [],
+    setErrorMessage: () => undefined,
+    errorMessage: null,
 };
 
 const AppContext = React.createContext(appContextDefaults);
