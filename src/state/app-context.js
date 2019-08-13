@@ -1,9 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const AppContext = React.createContext({
-    setImages: () => undefined,
+const appContextTypes = PropTypes.shape({
+    setImages: PropTypes.func,
 });
+
+const appContextDefaults = {
+    setImages: () => undefined,
+};
+
+const AppContext = React.createContext(appContextDefaults);
 
 const withAppContext = (Component) => {
     return (props) => {
@@ -15,9 +21,5 @@ const withAppContext = (Component) => {
     };
 };
 
-const appContextTypes = {
-    setImages: PropTypes.func.isRequired,
-};
-
 export default AppContext;
-export { withAppContext, appContextTypes };
+export { appContextTypes, appContextDefaults, withAppContext };

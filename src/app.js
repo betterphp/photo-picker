@@ -1,6 +1,8 @@
 import React from "react";
-import ImageSelector from "pages/image-selector";
+import _ from "lodash";
 import AppContext from "state/app-context";
+import ErrorMessageContainer from "components/error-message-container";
+import ImageSelector from "pages/image-selector";
 
 export default class App extends React.Component {
 
@@ -14,6 +16,7 @@ export default class App extends React.Component {
 
         this.state = {
             images: [],
+            errorMessage: null,
         };
     }
 
@@ -25,8 +28,33 @@ export default class App extends React.Component {
      * @return {void}
      */
     setImages = (files) => {
+        const imageTypes = [
+            "image/jpeg",
+            "image/png",
+        ];
+
+        const imageFiles = _.filter(files, (file) => imageTypes.indexOf(file.type) !== -1);
+        const otherFiles = _.filter(files, (file) => imageTypes.indexOf(file.type) === -1);
+        const invalidFileNames = _.map(otherFiles, (file) => file.name);
+
         this.setState({
-            images: files,
+            images: imageFiles,
+            errorMessage: (otherFiles.length !== 0)
+                ? `The following files are an unsupported: ${invalidFileNames.join(", ")}`
+                : null,
+        });
+    }
+
+    /**
+     * Sets the error error message to be displayed
+     *
+     * @param {string|null} message The message
+     *
+     * @return {void}
+     */
+    setErrorMessage = (message) => {
+        this.setState({
+            errorMessage: message,
         });
     }
 
@@ -51,11 +79,16 @@ export default class App extends React.Component {
     render () {
         const context = {
             setImages: this.setImages,
+            setErrorMessage: this.setErrorMessage,
+            errorMessage: this.state.errorMessage,
         };
 
         return (
             <AppContext.Provider value={context}>
-                {this.renderPage()}
+                <>
+                    <ErrorMessageContainer />
+                    {this.renderPage()}
+                </>
             </AppContext.Provider>
         );
 

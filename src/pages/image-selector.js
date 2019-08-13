@@ -135,6 +135,7 @@ class ImageSelector extends React.Component {
                     onChange={this.handleChange}
                     className={styles.fileInput}
                     ref={this.fileInput}
+                    multiple
                 />
             </div>
         );
